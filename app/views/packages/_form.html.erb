@@ -1,0 +1,58 @@
+<%= form_with(model: package, local: true) do |form| %>
+  <% if package.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(package.errors.count, "error") %> prohibited this package from being saved:</h2>
+
+      <ul>
+      <% package.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.number_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :length %>
+    <%= form.number_field :length %>
+  </div>
+
+  <div class="field">
+    <%= form.label :width %>
+    <%= form.number_field :width %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :size %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Откуда?' %>
+    <%= form.text_field :from_addr %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Куда?' %>
+    <%= form.text_field :to_addr %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+  <p><%= @ccc %> </p>
+<% end %>
