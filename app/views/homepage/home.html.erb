@@ -1,5 +1,12 @@
-<h1>Homepage#home</h1>
-<%= link_to "Отправить посылку", new_package_path  %>
+<center>
+  <h3> <%= current_client.email %> </h3>
+  <br>
+  <%= link_to "Отправить посылку", new_package_path, style: 'color:blue; font-size:20px'  %>
+  <br>
+  <br>
+  <%= image_tag(current_client.image.url, alt: 'Image', style: 'max-width:300px;max-height:300px') if current_client.image? %>
+</center>
 
 
-<p>Find me in app/views/homepage/home.html.erb</p>
+
+

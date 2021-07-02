@@ -8,7 +8,7 @@ class Package < ApplicationRecord
     dm_json = JSON.parse(URI.open(dm_link).string)
     puts "А вот это у нас DM_JSON #{dm_json}"
     distance = (dm_json["rows"][0]["elements"][0]["distance"]["text"]).tr('^0-9.', '')
-    size = (height.to_f * length.to_f * width.to_f) / 1000000
+    size = ((height.to_f * length.to_f * width.to_f) / 1000000.0).round(2)
 
     if size < 1
       price = distance.to_f
@@ -18,7 +18,7 @@ class Package < ApplicationRecord
       price = distance.to_f * 3.0
     end
 
-    result = {weight: weight, length: length, width: width, height: height, distance: distance.to_f, price: price.round}
+    result = {weight: weight, length: length, width: width, height: height, distance: distance.to_f, price: price.round, size: size}
     return result
   end
 
