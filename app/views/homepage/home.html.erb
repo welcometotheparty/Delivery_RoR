@@ -5,7 +5,14 @@
   <br>
   <br>
   <%= image_tag(current_client.image.url, alt: 'Image', style: 'max-width:300px;max-height:300px') if current_client.image? %>
+  <h2>Текущие заявки</h2>
 </center>
+
+<%= page_entries_info @packages %>
+<%= paginate @packages %>
+<%= render "packages_list" %>
+
+
 
 
 
