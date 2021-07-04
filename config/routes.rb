@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'homepage/home'
   get 'homepage/admin_home'
+  get '/search' => 'homepage#search', :as => 'search_page'
   root 'homepage#home'
   devise_for :clients, :controllers => { :registrations => 'clients' }
   resources :packages

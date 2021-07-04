@@ -9,11 +9,18 @@
 
 Organization.create!(name: 'Компания Иванова', org_code: 111, org_admin_code: 111111)
 User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-Client.create!(email: 'client@mail.ru', password: 'password', password_confirmation: 'password')
+Client.create!(email: 'operator@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111)
+Client.create!(email: 'operator_sec@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111)
 
-rng = 1..40
+Client.create!(email: 'client@mail.ru', password: 'password', password_confirmation: 'password', org_admin: 111111, org_code: 111)
+
+
+rng = 1..5
 rng.each do |n|
-  Package.create!(weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Artem', surname: 'Ivanov', patronymic: 'Ivanovich', number: '777777777', client_id: 1, price: 20.0, size: 0.2)
+  Package.create!(weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Artem', surname: 'Ivanov', patronymic: 'Ivanovich', number: '777777777', client_id: 1, price: 20.0, size: 0.2, org_code: 111, operator: 'operator@mail.ru')
 end
+
+Package.create!(weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Artsssem', surname: 'Iasdasdov', patronymic: 'Ivanovich', number: '777777777', price: 20.0, size: 0.2, org_code: 111, operator: 'operator_sec@mail.ru')
+
 
 puts 'SEEDS DONE'

@@ -11,7 +11,15 @@ class HomepageController < ApplicationController
 
   def admin_home
     @packages = Package.where(org_code: current_client.org_code ).page(params[:page])
-    @filtered_packages = @packages.filter_by_operator(params[:operator]) if params[:operator].present?
+  end
 
+  def search
+    if params[:search].blank?
+      redirect_to(homepage_admin_home_path, alert: "Empty field!") and return
+      puts 'пусто, не передан параметр'
+    else
+      @parameter = params[:search].downcase
+      @results = Package.all.where("lower(operator) LIKE :search", search: @parameter)
+    end
   end
 end
