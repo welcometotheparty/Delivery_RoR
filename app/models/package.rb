@@ -2,6 +2,8 @@ class Package < ApplicationRecord
   require 'open-uri'
   require 'json'
 
+  validates :name, :surname, :patronymic, :number, :email, :weight, :length, :width, :height, :to_addr, :from_addr, presence: true
+
   def route_calculate(weight,length, width, height, point_from, point_to)
     dm_token = "VoTVkcF4oV6BNzRjCAo0VLYoTREUz"
     dm_link = "https://api.distancematrix.ai/maps/api/distancematrix/json?origins=#{point_from}&destinations=#{point_to}&key=#{dm_token}"
@@ -13,14 +15,12 @@ class Package < ApplicationRecord
       price = distance.to_f
     elsif size > 1 and weight < 10
       price = distance.to_f * 2.0
-    else
+    elsif size > 1 and weight > 10
       price = distance.to_f * 3.0
     end
 
     result = {weight: weight, length: length, width: width, height: height, distance: distance.to_f, price: price.round, size: size}
     return result
   end
-
-  scope :filter_by_operator, -> (operator) { where operator: operator }
 
 end

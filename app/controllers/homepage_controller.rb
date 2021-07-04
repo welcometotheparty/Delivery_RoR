@@ -10,17 +10,23 @@ class HomepageController < ApplicationController
   end
 
   def admin_home
-    @clients = Client.where(org_code: current_client.org_code)
+    @operators = Client.where(org_code: current_client.org_code).where.not(email: current_client.email)
     @packages = Package.where(org_code: current_client.org_code ).page(params[:page])
+    @total_packages = @packages.length
+    @average_price = 0
+    @packages.map do |m|
+      @average_price = @average_price + m.price
+    end
+    @average_price = @average_price / @packages.length
+    @greatest_distance = @packages.order(:distance)[0]
+    @smallest_distance = @packages.order(:distance).reverse[0]
+    #puts "ETO DD #{@greatest_distance[0].distance}"
+
+
   end
 
   def search
-    if params[:search].blank?
-      redirect_to(homepage_admin_home_path, alert: "Empty field!") and return
-      puts 'пусто, не передан параметр'
-    else
-      @parameter = params[:search].downcase
-      @results = Package.all.where("lower(operator) LIKE :search", search: @parameter)
-    end
+    @parameter = params[:search].downcase
+    @packages = Package.all.where("lower(operator) LIKE :search", search: @parameter).page(params[:page])
   end
 end

@@ -1,20 +1,28 @@
 <center>
+  <%= link_to "Выйти", destroy_client_session_path, method: :delete %>
   <h3> <%= current_client.email %> </h3>
   <br>
   <%= image_tag(current_client.image.url, alt: 'Image', style: 'max-width:300px;max-height:300px') if current_client.image? %>
-
+  <p> Посмотреть заявки конкретного оператора </p>
   <%= form_tag(search_page_path, :method => "get") do %>
-    <div class="input-group">
-
-
-      <%= select_tag(:search, options_from_collection_for_select(@clients, :email, :email)) %>
-
-      <div class="input-group-btn">
-        <%= submit_tag "search",:name => nil%>
+    <div>
+      <%= select_tag(:search, options_from_collection_for_select(@operators, :email, :email)) %>
+      <div>
+        <br>
+        <%= submit_tag "показать"%>
       </div>
     </div>
   <% end %>
 
+  <h3>Аналитика</h3>
+  <p>Всего заявок <%= @total_packages %></p>
+  <% @operators.each do |operator| %>
+    <% operators_packages = Package.where(org_code: operator.org_code, operator: operator.email).length %>
+    <p>У оператора <%= operator.email %> заявок:<%= operators_packages %> </p>
+  <% end %>
+  <p>Средняя сумма по заявкам <%= @average_price %></p>
+  <p> Самая дальняя посылка - посылка с id <%= @greatest_distance.id %> и ее путь <%= @greatest_distance.distance %></p>
+  <p> Самая короткая посылка - посылка с id <%= @smallest_distance.id %> и ее путь <%= @smallest_distance.distance %></p>
 
 
   <h2>Текущие заявки</h2>

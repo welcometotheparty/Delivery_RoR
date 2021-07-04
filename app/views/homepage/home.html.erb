@@ -1,4 +1,6 @@
 <center>
+  <%= link_to "Выйти", destroy_client_session_path, method: :delete %>
+
   <h3> <%= current_client.email %> </h3>
   <br>
   <%= link_to "Отправить посылку", new_package_path, style: 'color:blue; font-size:20px'  %>
