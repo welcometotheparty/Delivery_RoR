@@ -9,11 +9,25 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="field">
+    <%= f.hidden_field :tag_list %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Код организации' %>
+    <%= f.number_field :org_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Код администратора организации (если есть)' %>
+    <%= f.number_field :org_admin %>
+  </div>
+
   <div>
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

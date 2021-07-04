@@ -6,7 +6,6 @@ class Package < ApplicationRecord
     dm_token = "VoTVkcF4oV6BNzRjCAo0VLYoTREUz"
     dm_link = "https://api.distancematrix.ai/maps/api/distancematrix/json?origins=#{point_from}&destinations=#{point_to}&key=#{dm_token}"
     dm_json = JSON.parse(URI.open(dm_link).string)
-    puts "А вот это у нас DM_JSON #{dm_json}"
     distance = (dm_json["rows"][0]["elements"][0]["distance"]["text"]).tr('^0-9.', '')
     size = ((height.to_f * length.to_f * width.to_f) / 1000000.0).round(2)
 
@@ -22,8 +21,6 @@ class Package < ApplicationRecord
     return result
   end
 
-  def tester
-    puts 'TETSTSTSTTTAAAA'
-  end
+  scope :filter_by_operator, -> (operator) { where operator: operator }
 
 end

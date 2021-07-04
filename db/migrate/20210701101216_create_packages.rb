@@ -15,6 +15,7 @@ class CreatePackages < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :surname
       t.string :patronymic
+      t.boolean :status
 
       t.timestamps
     end
