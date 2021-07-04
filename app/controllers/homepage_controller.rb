@@ -10,6 +10,7 @@ class HomepageController < ApplicationController
   end
 
   def admin_home
+    @clients = Client.where(org_code: current_client.org_code)
     @packages = Package.where(org_code: current_client.org_code ).page(params[:page])
   end
 
