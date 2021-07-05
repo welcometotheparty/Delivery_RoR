@@ -1,6 +1,7 @@
 class Package < ApplicationRecord
   require 'open-uri'
   require 'json'
+  require 'csv'
 
   validates :name, :surname, :patronymic, :number, :email, :weight, :length, :width, :height, :to_addr, :from_addr, presence: true
 

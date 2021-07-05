@@ -1,0 +1,7 @@
+id,weight,length,width,height,distance,price,size,client_id,from_addr,to_addr,number,name,surname,patronymic,status,created_at,updated_at,org_code,operator,email
+1,12,20,30,40,,20.0,0.2,1,Moscow,Krasnodar,777777777,Artem,Ivanov,Ivanovich,,2021-07-04 16:05:23 UTC,2021-07-04 16:05:23 UTC,111,operator@mail.ru,zzz@mail.ru
+6,12,20,30,40,134.0,20.0,0.2,,Moscow,Krasnodar,1111111,Artsssem,Iasdasdov,Ivanovich,,2021-07-04 16:05:23 UTC,2021-07-04 16:05:23 UTC,111,operator_sec@mail.ru,yyy@mail.ru
+2,12,20,30,40,,20.0,0.2,1,Moscow,Krasnodar,777777777,Artem,Ivanov,Ivanovich,true,2021-07-04 16:05:23 UTC,2021-07-04 17:13:37 UTC,111,operator@mail.ru,zzz@mail.ru
+4,12,20,30,40,,20.0,0.2,1,Moscow,Krasnodar,777777777,Artem,Ivanov,Ivanovich,false,2021-07-04 16:05:23 UTC,2021-07-05 07:30:14 UTC,111,operator@mail.ru,zzz@mail.ru
+5,12,20,30,40,,20.0,0.2,1,Moscow,Krasnodar,777777777,Artem,Ivanov,Ivanovich,true,2021-07-04 16:05:23 UTC,2021-07-05 07:31:06 UTC,111,operator@mail.ru,zzz@mail.ru
+3,12,20,30,40,,20.0,0.2,1,Moscow,Krasnodar,777777777,Artem,Ivanov,Ivanovich,true,2021-07-04 16:05:23 UTC,2021-07-05 07:32:07 UTC,111,operator@mail.ru,zzz@mail.ru

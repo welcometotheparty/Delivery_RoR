@@ -3,7 +3,7 @@
   <h3> <%= current_client.email %> </h3>
   <br>
   <%= image_tag(current_client.image.url, alt: 'Image', style: 'max-width:300px;max-height:300px') if current_client.image? %>
-  <p> Посмотреть заявки конкретного оператора </p>
+  <p> Отфильтровать по оператору </p>
   <%= form_tag(search_page_path, :method => "get") do %>
     <div>
       <%= select_tag(:search, options_from_collection_for_select(@operators, :email, :email)) %>
@@ -14,6 +14,9 @@
     </div>
   <% end %>
 
+  <br>
+  <%= link_to 'Сформировать csv таблицу', homepage_csv_export_path, method: :post %>
+
   <h3>Аналитика</h3>
   <p>Всего заявок <%= @total_packages %></p>
   <% @operators.each do |operator| %>
@@ -23,7 +26,6 @@
   <p>Средняя сумма по заявкам <%= @average_price %></p>
   <p> Самая дальняя посылка - посылка с id <%= @greatest_distance.id %> и ее путь <%= @greatest_distance.distance %></p>
   <p> Самая короткая посылка - посылка с id <%= @smallest_distance.id %> и ее путь <%= @smallest_distance.distance %></p>
-
 
   <h2>Текущие заявки</h2>
   <p>(нажмите на заголовок для сортировки)</p>

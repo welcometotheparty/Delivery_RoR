@@ -14,7 +14,7 @@ class PackagesController < InheritedResources::Base
   private
 
     def package_params
-      params.require(:package).permit(:weight, :length, :width, :height, :price, :size, :from_addr, :to_addr, :name, :surname, :patronymic, :number, :org_code, :email, :distance, :operator)
+      params.require(:package).permit(:weight, :status, :length, :width, :height, :price, :size, :from_addr, :to_addr, :name, :surname, :patronymic, :number, :org_code, :email, :distance, :operator)
     end
 
 end
