@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   post 'homepage/csv_export'
   root 'homepage#home'
   devise_for :clients
-  resources :packages
+  resources :packages, except: [:index]
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :pages, only: [] do
+    get 'home', on: :collection
+  end
 end

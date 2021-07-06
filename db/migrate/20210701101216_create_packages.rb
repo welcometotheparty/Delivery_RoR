@@ -17,6 +17,9 @@ class CreatePackages < ActiveRecord::Migration[5.2]
       t.string :patronymic
       t.boolean :status
 
+      t.integer :organization_id
+      t.integer :client_id
+
       t.timestamps
     end
   end

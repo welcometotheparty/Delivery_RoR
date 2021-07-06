@@ -5,6 +5,7 @@ class PackagesController < InheritedResources::Base
     @package.price = package_hash[:price]
     @package.size = package_hash[:size]
     @package.client_id = current_client.id
+    @package.organization_id = 1
     @package.org_code = current_client.org_code
     @package.distance = package_hash[:distance]
     @package.operator = current_client.email

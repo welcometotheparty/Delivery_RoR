@@ -4,8 +4,8 @@ class DeviseCreateClients < ActiveRecord::Migration[5.2]
   def change
     create_table :clients do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false
+      t.string :encrypted_password, null: false
 
       ## Recoverable
       t.string   :reset_password_token
@@ -16,6 +16,8 @@ class DeviseCreateClients < ActiveRecord::Migration[5.2]
 
       t.integer :org_code
       t.integer :org_admin
+
+      t.integer :organization_id
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

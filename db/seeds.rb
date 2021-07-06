@@ -7,22 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Organization.create!(name: 'Компания Иванова', org_code: 111, org_admin_code: 111111)
+Organization.create!(name: 'Компания Иванова', org_code: 111, org_admin_code: 111111, id:1 )
+Organization.create!(name: 'Компания Сидорова', org_code: 222, org_admin_code: 222222, id:2)
+
 User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-Client.create!(email: 'operator@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111)
-Client.create!(email: 'operator_sec@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111)
-Client.create!(email: 'operator_three@mail.ru', password: 'password', password_confirmation: 'password', org_code: 222)
 
-Client.create!(email: 'client@mail.ru', password: 'password', password_confirmation: 'password', org_admin: 111111, org_code: 111)
+Client.create!(email: 'operator@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111, organization_id: 1)
+Client.create!(email: 'operator_sec@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111, organization_id: 1)
+Client.create!(email: 'operator_three@mail.ru', password: 'password', password_confirmation: 'password', org_code: 222, organization_id: 2)
+
+Client.create!(email: 'client@mail.ru', password: 'password', password_confirmation: 'password', org_admin: 111111, org_code: 111, organization_id: 1)
+Client.create!(email: 'client222@mail.ru', password: 'password', password_confirmation: 'password', org_admin: 222222, org_code: 222, organization_id: 2)
 
 
-rng = 1..5
+rng = 1..30
 rng.each do |n|
-  Package.create!(email: 'zzz@mail.ru', weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Artem', surname: 'Ivanov', patronymic: 'Ivanovich', number: '777777777', client_id: 1, price: 20.0, size: 0.2, org_code: 111, operator: 'operator@mail.ru', distance: 64)
+  Package.create!(email: 'zzz@mail.ru', weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Artem', surname: 'Ivanov', patronymic: 'Ivanovich', number: '777777777', price: rand(10..1000), size: rand(5..100), org_code: 111, operator: 'operator@mail.ru', distance: rand(100..1000), organization_id: 1, client_id: 1)
 end
 
-Package.create!(email: 'yyy@mail.ru',weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Artsssem', surname: 'Iasdasdov', patronymic: 'Ivanovich', number: '1111111', price: 20.0, size: 0.2, org_code: 111, distance: 134, operator: 'operator_sec@mail.ru')
-Package.create!(email: 'not_111@mail.ru',weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Artsssem', surname: 'Iasdasdov', patronymic: 'Ivanovich', number: '1111111', price: 20.0, size: 0.2, org_code: 222, operator: 'operator_three@mail.ru')
+#Посылки для второго оператора, чтобы проверить фильтр по операторам
+rng = 1..5
+rng.each do |n|
+  Package.create!(email: 'xxx@mail.ru', weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Artem', surname: 'Ivanov', patronymic: 'Ivanovich', number: '777777777', price: rand(10..1000), size: rand(5..100), org_code: 111, operator: 'operator_sec@mail.ru', distance: rand(100..1000), organization_id: 1, client_id: 1)
+end
 
+#Посылки для третьего оператора, принадлежащего к другой организации, чтобы проверить, что у админов разделены заявки по организациям
+rng = 1..5
+rng.each do |n|
+  Package.create!(email: 'aaa@mail.ru', weight: 12, length: 20, width: 30, height: 40, from_addr: 'Moscow', to_addr: 'Krasnodar', name: 'Evgeny', surname: 'Ivanov', patronymic: 'Ivanovich', number: '777777777', price: rand(10..1000), size: rand(5..100), org_code: 222, operator: 'operator_three@mail.ru', distance: rand(100..1000), organization_id: 2, client_id: 3)
+end
 
 puts 'SEEDS DONE'

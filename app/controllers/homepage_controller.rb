@@ -12,6 +12,7 @@ class HomepageController < ApplicationController
   def admin_home
     @operators = Client.where(org_code: current_client.org_code).where.not(email: current_client.email)
     @packages = Package.where(org_code: current_client.org_code ).page(params[:page])
+
     @total_packages = @packages.length
     @average_price = 0
     @packages.map do |m|
@@ -40,9 +41,8 @@ class HomepageController < ApplicationController
     end
 
     send_file(
-      file,
-      filename: "Packages.csv",
-      type: "csv"
-    )
+     file,
+     filename: "Packages.csv",
+     type: "csv")
   end
 end
