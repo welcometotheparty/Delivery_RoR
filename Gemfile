@@ -22,9 +22,12 @@ gem 'json'
 gem 'jquery-turbolinks'
 gem 'carrierwave'
 gem 'kaminari'
+gem 'pony'
 gem "letter_opener"
 gem 'simple_form'
+gem 'sidekiq'
 gem 'rspec-rails'
+gem "pundit"
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'

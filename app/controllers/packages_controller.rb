@@ -10,6 +10,7 @@ class PackagesController < InheritedResources::Base
     @package.distance = package_hash[:distance]
     @package.operator = current_client.email
     create!
+
   end
 
   private

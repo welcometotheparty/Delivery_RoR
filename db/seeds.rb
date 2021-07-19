@@ -12,12 +12,12 @@ Organization.create!(name: 'Компания Сидорова', org_code: 222, o
 
 User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-Client.create!(email: 'operator@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111, organization_id: 1)
+Client.create!(email: 'operator@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111, organization_id: 1, image: "https://images.unsplash.com/photo-1626159129266-e5bc98531d9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80")
 Client.create!(email: 'operator_sec@mail.ru', password: 'password', password_confirmation: 'password', org_code: 111, organization_id: 1)
 Client.create!(email: 'operator_three@mail.ru', password: 'password', password_confirmation: 'password', org_code: 222, organization_id: 2)
 
-Client.create!(email: 'client@mail.ru', password: 'password', password_confirmation: 'password', org_admin: 111111, org_code: 111, organization_id: 1)
-Client.create!(email: 'client222@mail.ru', password: 'password', password_confirmation: 'password', org_admin: 222222, org_code: 222, organization_id: 2)
+Client.create!(email: 'client@mail.ru', password: 'password', password_confirmation: 'password', org_admin: 111111, org_code: 111, organization_id: 1, image: "https://images.unsplash.com/photo-1626159129266-e5bc98531d9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80")
+Client.create!(email: 'client222@mail.ru', password: 'password', password_confirmation: 'password', org_admin: 222222, org_code: 222, organization_id: 2, image: "https://images.unsplash.com/photo-1626159129266-e5bc98531d9c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80" )
 
 
 rng = 1..30

@@ -13,18 +13,7 @@ class ClientsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    puts resource.tag_list
-    resource.tag_list.add('test-tag')
-    puts 'после тег крейта'
-    puts resource.tag_list
-    puts resource.email
-    puts 'а щас через собака-клиент'
-    puts @client.email
     resource.save
-    puts resource.tag_list
-    puts 'после сейва выше'
-
-    puts 'ЧЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕК'
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?

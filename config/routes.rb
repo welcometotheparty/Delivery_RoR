@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   get 'homepage/home'
   get 'homepage/admin_home'
@@ -11,5 +13,9 @@ Rails.application.routes.draw do
 
   resources :pages, only: [] do
     get 'home', on: :collection
+  end
+
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
   end
 end

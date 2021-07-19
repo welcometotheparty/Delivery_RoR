@@ -40,9 +40,21 @@ class HomepageController < ApplicationController
       end
     end
 
-    send_file(
-     file,
-     filename: "Packages.csv",
-     type: "csv")
+    Pony.mail(
+      to: current_client.email,
+      from: 'Route Calculator',
+      via: :smtp,
+      attachments: {'data.csv' => File.read("#{Rails.root}/public/data.csv")},
+      via_options: {
+        address: 'smtp.gmail.com',
+        port: '587',
+        user_name: YOUR_GMAIL_HERE,
+        password: YOUR_PASSWORD_HERE,
+        authentication: :plain,
+        domain: 'mail.google.com'
+      },
+      subject: 'Test',
+      body: 'your csv'
+    )
   end
 end
